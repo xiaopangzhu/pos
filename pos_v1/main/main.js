@@ -41,10 +41,7 @@ function getPromotionType(barcode,promotions){
 }
 
 function discount(cartItem,promotionType){
-  let freeItemCount = 0;
-  if(promotionType == 'BUY_TWO_GET_ONE_FREE'){
-    freeItemCount = parseInt(cartItem.count / 3);
-  }
+  let freeItemCount = promotionType === 'BUY_TWO_GET_ONE_FREE' ? parseInt(cartItem.count / 3) : 0;
   let save = freeItemCount * cartItem.item.price;
   let subtotal = cartItem.count * cartItem.item.price;
   return {subtotal,save};
