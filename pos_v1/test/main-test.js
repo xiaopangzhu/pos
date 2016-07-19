@@ -58,7 +58,45 @@ describe('pos', () => {
     });
   });
 
-  
+  describe('buidItemsSubtotal',()=>{
+    it('get items subtotal and save',()=>{
+      let items = [
+        {item:{barcode: 'ITEM000001',
+          name:'雪碧',
+          unit:'瓶',
+          price:3.00},
+          count:2
+        },
+        {item:{barcode: 'ITEM000003',
+          name:'荔枝',
+          unit:'斤',
+          price:15.00},
+          count:3
+        }
+      ];
+      const expexctItemsSubtotal = [
+        {cartItem:{item:{barcode: 'ITEM000001',
+                        name:'雪碧',
+                        unit:'瓶',
+                        price:3.00},
+                        count:2
+                      },
+         subtotal:6.00,
+         save:0.00
+        },
+        {cartItem:{item:{barcode: 'ITEM000003',
+                    name:'荔枝',
+                    unit:'斤',
+                    price:15.00},
+                    count:3
+                  },
+         subtotal:45.00,
+         save:15.00
+        }
+      ];
+      expect(buildItemsSubtotal(items)).toEqual(expexctItemsSubtotal);
+    });
+  });
 
   let inputs;
 beforeEach(() => {

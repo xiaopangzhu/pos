@@ -1,5 +1,13 @@
 'use strict';
 
+function printReceipt(tags){
+  let items = buildItems(tags);
+  let itemsSubtals = buildItemsSubtotal(items);
+  let cartTotal = buildCartTotal(itemsSubtals);
+  let receiptText = buildReceiptText(cartTotal);
+  console.log(receiptText);
+}
+
 function buildItems(tags){
   let items = [];
   let allItems = loadAllItems();
@@ -17,4 +25,14 @@ function buildItems(tags){
     }
   }
   return items;
+}
+
+function buildItemsSubtotal(items){
+  let itemsSubtotals = [];
+  for (let item of items){
+    let subtotal = item.item.price*item.count;
+    let save = Math.floor(item.count/3)*item.item.price;
+    itemsSubtotals.push({cartItem:item,subtotal:subtotal,save:save});
+  }
+  return itemsSubtotals;
 }
