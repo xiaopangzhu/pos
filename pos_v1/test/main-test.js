@@ -58,8 +58,10 @@ describe('pos', () => {
     });
   });
 
+  
+
   let inputs;
-  beforeEach(() => {
+beforeEach(() => {
     inputs = [
       'ITEM000001',
       'ITEM000001',
@@ -88,6 +90,6 @@ describe('pos', () => {
   节省：7.50(元)
   **********************`;
 
-  expect(expectText).toHaveBeenCalledWith(expectText);
+  expect(console.log).toHaveBeenCalledWith(expectText);
   });
 });
