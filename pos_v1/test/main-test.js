@@ -3,20 +3,6 @@
 describe('pos', () => {
 
   describe('items',()=>{
-    it('should print one item',()=>{
-      let inputs = [
-        'ITEM000001'
-      ];
-      const expectItem = [
-        {item:{barcode: 'ITEM000001',
-               name:'雪碧',
-               unit:'瓶',
-               price:3.00},
-         count:1
-        }
-      ];
-      expect(buildItems(inputs)).toEqual(expectItem);
-    });
 
     it('should print two items',()=>{
       let inputs = [
@@ -58,7 +44,7 @@ describe('pos', () => {
     });
   });
 
-  describe('buidItemsSubtotal',()=>{
+  describe('buildCartItems',()=>{
     it('get items subtotal and save',()=>{
       let items = [
         {item:{barcode: 'ITEM000001',
@@ -67,14 +53,14 @@ describe('pos', () => {
           price:3.00},
           count:2
         },
-        {item:{barcode: 'ITEM000003',
-          name:'荔枝',
-          unit:'斤',
-          price:15.00},
+        {item:{barcode: 'ITEM000005',
+          name: '方便面',
+          unit: '袋',
+          price: 4.50},
           count:3
         }
       ];
-      const expexctItemsSubtotal = [
+      const expexctCartItems = [
         {cartItem:{item:{barcode: 'ITEM000001',
                         name:'雪碧',
                         unit:'瓶',
@@ -84,22 +70,23 @@ describe('pos', () => {
          subtotal:6.00,
          save:0.00
         },
-        {cartItem:{item:{barcode: 'ITEM000003',
-                    name:'荔枝',
-                    unit:'斤',
-                    price:15.00},
+        {cartItem:{item:{
+                    barcode: 'ITEM000005',
+                    name: '方便面',
+                    unit: '袋',
+                    price: 4.50},
                     count:3
                   },
-         subtotal:45.00,
-         save:15.00
+         subtotal:13.50,
+         save:4.50
         }
       ];
-      expect(buildItemsSubtotal(items)).toEqual(expexctItemsSubtotal);
+      expect(buildCartItems(items)).toEqual(expexctCartItems);
     });
   });
 
   let inputs;
-beforeEach(() => {
+  beforeEach(() => {
     inputs = [
       'ITEM000001',
       'ITEM000001',
