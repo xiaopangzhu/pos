@@ -56,7 +56,7 @@ function buildReceipt(receiptItems) {
   let savedTotal = 0;
   for (let receiptItem of receiptItems) {
     total += receiptItem.subtotal;
-    savedTotal = receiptItem.saved;
+    savedTotal += receiptItem.saved;
   }
   return {receiptItems,total,savedTotal};
 }
